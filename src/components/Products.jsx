@@ -1,11 +1,21 @@
 import { useEffect } from "react";
 import Card from "./Card";
 
-const Products = ({ productData, setProductData, addToCart,removeFromCart, cart }) => {
+const Products = ({
+  productData,
+  setProductData,
+  addToCart,
+  removeFromCart,
+  cart,
+}) => {
   const getProducts = async () => {
-    const response = await fetch("https://fakestoreapi.com/products");
-    const data = await response.json();
-    setProductData(data);
+    try {
+      const response = await fetch("https://fakestoreapi.com/products");
+      const data = await response.json();
+      setProductData(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
